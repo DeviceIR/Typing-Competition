@@ -5,120 +5,158 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
     <title>Type Game</title>
   </head>
   <body>
-    <div class="wpm-list hidden"></div>
-
-    <div class="details">
-      <div class="wpm">
-        <div class="head">Words/min</div>
-        <div id="init_wpm">0</div>
-      </div>
-
-      <div class="errors">
-        <div class="head">Errors</div>
-        <div id="init_errors">0</div>
-      </div>
-
-      <div class="timer">
-        <div class="head">Time(s)</div>
-        <div id="init_time">0s</div>
-      </div>
-
-      <div class="accuracy">
-        <div class="head">Accuracy(%)</div>
-        <div class="init_accuracy">0</div>
-      </div>
+    <div
+      class="overlay overlay--error front-layer hidden"
+      onclick="closeError()"
+      id="error"
+    >
+      <p class="overlay__text overlay__text--error" id="error-text">
+        Error message here
+      </p>
     </div>
-    <div class="content">
-      <!--<h1 class="title">Focus</h1>
+
+    <div class="overlay front-layer" id="login-container">
+      <p class="overlay__text">enter Your fking ticket</p>
+      <input
+        type="text"
+        class="overlay__input"
+        placeholder="LL-DDDDDDDD"
+        id="login__ticket"
+      />
+      <button class="overlay__submit" onclick="login()">Login</button>
+    </div>
+
+    <div class="overlay front-layer hidden" id="startGame-container">
+      <p class="overlay__text overlay__text--fade">You are logged in as:</p>
+      <p class="overlay__text" id="menu__username">nickname</p>
+      <button id="start" class="overlay__submit" onclick="startCountDown()">
+        Start Game
+      </button>
+    </div>
+
+    <div class="overlay front-layer hidden" id="countdown">
+      <p class="overlay__text overlay__text--fade">Game will start in</p>
+      <p class="overlay__text" id="countdown--value">5</p>
+    </div>
+
+    <div id="game" class="hidden">
+      <div class="details">
+        <div class="wpm">
+          <div class="head">Words/min</div>
+          <div id="init_wpm">0</div>
+        </div>
+
+        <div class="errors">
+          <div class="head">Errors</div>
+          <div id="init_errors">0</div>
+        </div>
+
+        <div class="timer">
+          <div class="head">Time(s)</div>
+          <div id="init_time">0s</div>
+        </div>
+
+        <div class="accuracy">
+          <div class="head">Accuracy(%)</div>
+          <div class="init_accuracy">0</div>
+        </div>
+      </div>
+      <div class="content">
+        <!--<h1 class="title">Focus</h1>
       <h1 class="title">Be Ready</h1>-->
-    </div>
-    <div class="container selen">
-      <div class="input-box">
-        <!-- onfocusout="resset()" -->
-        <input
-          id="clearrr"
-          class="User-input"
-          placeholder="Do your best..."
-          type="text"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-          aria-label="Typing input"
-          value=""
-        />
       </div>
-    </div>
+      <div class="container selen">
+        <div class="input-box">
+          <!-- onfocusout="resset()" -->
+          <input
+            id="clearrr"
+            class="User-input"
+            placeholder="Do your best..."
+            type="text"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            aria-label="Typing input"
+            value=""
+          />
+        </div>
+      </div>
 
-    <div class="container">
-      <div class="keyboard">
-        <ul class="row row-0">
-          <li class="htb" id="esc">ESC</li>
-          <li class="htb" id="1">1</li>
-          <li class="ring" id="2">2</li>
-          <li class="middle" id="3">3</li>
-          <li class="pointer1st" id="4">4</li>
-          <li class="pointer2nd" id="5">5</li>
-          <li class="pointer2nd" id="6">6</li>
-          <li class="pointer1st1" id="7">7</li>
-          <li class="middle1" id="8">8</li>
-          <li class="ring1" id="9">9</li>
-          <li class="htb1" id="10">0</li>
-          <li class="htb1">-</li>
-          <li class="htb1">+</li>
-          <li class="htb1" id="back">BACK</li>
-        </ul>
-        <ul class="row row-1">
-          <li class="htb" id="tab">TAB</li>
-          <li class="htb" id="Q">Q</li>
-          <li class="ring" id="W">W</li>
-          <li class="middle" id="E">E</li>
-          <li class="pointer1st" id="R">R</li>
-          <li class="pointer2nd" id="T">T</li>
-          <li class="pointer2nd" id="Y">Y</li>
-          <li class="pointer1st1" id="U">U</li>
-          <li class="middle1" id="I">I</li>
-          <li class="ring1" id="O">O</li>
-          <li class="htb1" id="P">P</li>
-          <li class="htb1">[</li>
-          <li class="htb1">]</li>
-          <li class="htb1">\</li>
-        </ul>
-        <ul class="row row-2">
-          <li class="htb" id="caps">CAPS</li>
-          <li class="htb" id="A">A</li>
-          <li class="ring" id="S">S</li>
-          <li class="middle" id="D">D</li>
-          <li class="pointer1st" id="F">F</li>
-          <li class="pointer2nd" id="G">G</li>
-          <li class="pointer2nd" id="H">H</li>
-          <li class="pointer1st1" id="J">J</li>
-          <li class="middle1" id="K">K</li>
-          <li class="ring1" id="L">L</li>
-          <li class="htb1">:</li>
-          <li class="htb1">''</li>
-          <li class="htb1" id="enter">ENTER</li>
-        </ul>
-        <ul class="row row-3">
-          <li class="htb" id="left-shift">SHIFT</li>
-          <li class="htb" id="Z">Z</li>
-          <li class="ring" id="X">X</li>
-          <li class="middle" id="C">C</li>
-          <li class="pointer1st" id="V">V</li>
-          <li class="pointer2nd" id="B">B</li>
-          <li class="pointer2nd" id="N">N</li>
-          <li class="pointer1st1" id="M">M</li>
-          <li class="middle1">,</li>
-          <li class="ring1">.</li>
-          <li class="htb1">;</li>
-          <li class="htb1" id="right-shift">SHIFT</li>
-        </ul>
+      <div class="container">
+        <div class="keyboard">
+          <ul class="row row-0">
+            <li class="htb" id="esc">ESC</li>
+            <li class="htb" id="1">1</li>
+            <li class="ring" id="2">2</li>
+            <li class="middle" id="3">3</li>
+            <li class="pointer1st" id="4">4</li>
+            <li class="pointer2nd" id="5">5</li>
+            <li class="pointer2nd" id="6">6</li>
+            <li class="pointer1st1" id="7">7</li>
+            <li class="middle1" id="8">8</li>
+            <li class="ring1" id="9">9</li>
+            <li class="htb1" id="10">0</li>
+            <li class="htb1">-</li>
+            <li class="htb1">+</li>
+            <li class="htb1" id="back">BACK</li>
+          </ul>
+          <ul class="row row-1">
+            <li class="htb" id="tab">TAB</li>
+            <li class="htb" id="Q">Q</li>
+            <li class="ring" id="W">W</li>
+            <li class="middle" id="E">E</li>
+            <li class="pointer1st" id="R">R</li>
+            <li class="pointer2nd" id="T">T</li>
+            <li class="pointer2nd" id="Y">Y</li>
+            <li class="pointer1st1" id="U">U</li>
+            <li class="middle1" id="I">I</li>
+            <li class="ring1" id="O">O</li>
+            <li class="htb1" id="P">P</li>
+            <li class="htb1">[</li>
+            <li class="htb1">]</li>
+            <li class="htb1">\</li>
+          </ul>
+          <ul class="row row-2">
+            <li class="htb" id="caps">CAPS</li>
+            <li class="htb" id="A">A</li>
+            <li class="ring" id="S">S</li>
+            <li class="middle" id="D">D</li>
+            <li class="pointer1st" id="F">F</li>
+            <li class="pointer2nd" id="G">G</li>
+            <li class="pointer2nd" id="H">H</li>
+            <li class="pointer1st1" id="J">J</li>
+            <li class="middle1" id="K">K</li>
+            <li class="ring1" id="L">L</li>
+            <li class="htb1">:</li>
+            <li class="htb1">''</li>
+            <li class="htb1" id="enter">ENTER</li>
+          </ul>
+          <ul class="row row-3">
+            <li class="htb" id="left-shift">SHIFT</li>
+            <li class="htb" id="Z">Z</li>
+            <li class="ring" id="X">X</li>
+            <li class="middle" id="C">C</li>
+            <li class="pointer1st" id="V">V</li>
+            <li class="pointer2nd" id="B">B</li>
+            <li class="pointer2nd" id="N">N</li>
+            <li class="pointer1st1" id="M">M</li>
+            <li class="middle1">,</li>
+            <li class="ring1">.</li>
+            <li class="htb1">;</li>
+            <li class="htb1" id="right-shift">SHIFT</li>
+          </ul>
+        </div>
       </div>
     </div>
     <h1 class="title" style="margin-top: 7rem">Created by device</h1>
-    <!-- <h1 class="title">Look at starter key</h1> -->
-    <script src="./script.js"></script>
+
+    <script src="elements.js"></script>
+    <script src="context.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

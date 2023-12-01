@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+
 /* General CSS*/
 * {
   padding: 0;
@@ -8,7 +10,8 @@ html {
   box-sizing: border-box;
 }
 
-body {
+body,
+#game {
   background-color: #141d2b;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -17,6 +20,18 @@ body {
   justify-content: end;
   align-items: center;
   height: 100vh;
+}
+
+::placeholder {
+  opacity: 80%;
+  color: #141d2b;
+  font-family: "PT Mono", monospace;
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.front-layer {
+  z-index: 9999;
 }
 
 .title:first-of-type {
@@ -390,11 +405,85 @@ li {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .centered {
   display: flex;
   justify-content: center;
   /* align-items: center; */
+}
+
+/* overlays */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48rem;
+  height: 60vh;
+  background-color: #fcdae3;
+  border-radius: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 20px #141d2b;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.overlay__text {
+  text-transform: uppercase;
+  font-weight: 850;
+  color: #141d2b;
+  font-size: 2.4rem;
+  letter-spacing: 1.5px;
+}
+.overlay__text--fade {
+  margin-bottom: 1.8rem;
+  opacity: 75%;
+}
+.overlay__input {
+  font-family: "PT Mono", monospace;
+  background-color: inherit;
+  border: none;
+  width: 60%;
+  text-align: center;
+  padding: 1.4rem 0.8rem;
+  border-radius: 1.6rem;
+  margin: 8rem 0 3.2rem 0;
+  color: #141d2b;
+  box-shadow: 0px 3px 2px #141d2b80;
+  /* border-bottom: 2px solid #141d2b; */
+}
+.overlay__input:focus-visible {
+  outline: none;
+}
+.overlay__input:focus-visible::placeholder {
+  visibility: hidden;
+}
+.overlay__submit {
+  background-color: inherit;
+  color: #fff;
+  border-radius: 1.6rem;
+  font-size: 2.4rem;
+  padding: 1.2rem 3.2rem;
+  background-color: #141d2b;
+  cursor: pointer;
+  margin-top: 3.2rem;
+  border: none;
+}
+
+.overlay--error {
+  width: 86rem;
+  height: 35vh;
+  cursor: pointer;
+}
+.overlay__text--error {
+  color: #e22759;
+}
+
+#countdown--value {
+  font-weight: 900;
+  font-size: 4.8rem;
 }
