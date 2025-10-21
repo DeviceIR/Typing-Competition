@@ -1,19 +1,22 @@
+// Containers and Overlays
 const errorOverlay = document.querySelector("#error");
-const errorText = document.querySelector("#error-text");
-const ticketInput = document.querySelector("#login__ticket");
 const loginOverlay = document.querySelector("#login-container");
 const startOverlay = document.querySelector("#startGame-container");
 const countdownOverlay = document.querySelector("#countdown");
 const gameOverlay = document.querySelector("#game");
 
+// Variable text elements in login phase
+const errorText = document.querySelector("#error-text");
+const ticketInput = document.querySelector("#login__ticket");
 const usernameText = document.querySelector("#menu__username");
 const countdownValue = document.querySelector("#countdown--value");
 
-const timer = document.querySelector("#init_time");
-const userInput = document.querySelector(".User-input");
+// Monitor variables
+const wpmText = document.getElementById("wpm");
+const elapsedTime = document.getElementById("elapsedTime");
+const errors = document.getElementById("errorCount");
+const accuracyText = document.getElementById("accuracy");
 
-const content = document.querySelector(".content");
-const input = document.getElementById("clearrr");
-
-const my_error = document.getElementById("init_errors");
-const my_wpm = document.getElementById("init_wpm");
+// IO variables
+const userInput = document.getElementById("input");
+const wordsContainer = document.getElementById("content");

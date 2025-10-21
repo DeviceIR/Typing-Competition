@@ -1,0 +1,178 @@
+/* General CSS*/
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 10fr 70fr 20fr;
+  background-color: #141a2b;
+  height: 100vh;
+}
+
+.column1,
+.column2,
+.column3 {
+  padding: 20px;
+  color: white;
+  font-size: 3.2rem;
+}
+
+/* column 1  */
+.git {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.git-icon {
+  width: fit-content;
+  height: fit-content;
+  margin: auto 1rem auto 0rem;
+  padding: 4px;
+  color: white;
+  background-color: #141a2b;
+
+  text-align: center;
+}
+
+.git-ids {
+  color: #fff;
+}
+
+/* column 3*/
+.logo-box {
+  border: 2px solid white;
+  margin-bottom: 40px;
+  /* width: 25rem; */
+  height: 25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.logo-box img {
+  width: 80%;
+  height: 80%;
+}
+
+.stats-box {
+  padding: 16px 16px;
+  color: #fff;
+  border: 2px solid white;
+}
+
+.sale-stat,
+.use-stat,
+.player-sign-stat {
+  border: 2px dashed white;
+  margin-bottom: 1.8rem;
+  padding: 4px 8px;
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.sale-stat {
+}
+
+.use-stat {
+}
+
+.player-sign-stat {
+}
+
+/* column 2 */
+.column2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(10, 1fr);
+  margin: 1.8rem 0;
+}
+
+.ranking {
+  list-style: none;
+  width: 96rem;
+  height: 4.8rem;
+  margin-bottom: 1.4rem;
+  border-radius: 16px;
+  background-color: #141a2b;
+  color: #141a2b;
+  overflow: hidden;
+  padding: 4px 8px;
+  display: flex;
+  color: white;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid white; */
+}
+
+.rank {
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  margin-right: 6rem;
+  margin-left: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ranking img {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  margin-right: 3rem;
+}
+
+.player-name {
+  font-weight: 700;
+  margin-left: 1.8rem;
+  font-size: 3.2rem;
+  letter-spacing: 1.5px;
+}
+
+.player-data,
+.player-name-container {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-name-container {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.player-wpm,
+.player-accuracy {
+  font-weight: 600;
+  font-size: 3.2rem;
+  letter-spacing: 1px;
+  align-self: center;
+}

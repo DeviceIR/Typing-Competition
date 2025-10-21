@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="fontawesome/css/brands.min.css" />
+    <link rel="stylesheet" href="fontawesome/css/solid.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Scoreboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column1">
+        <div class="git">
+          <div class="git-icon"><i class="fa-brands fa-github"></i></div>
+          <div class="git-ids">
+            <p>DeviceIR</p>
+            <p>Navid079</p>
+          </div>
+        </div>
+      </div>
+      <div class="column2">
+        <p>Typing Game</p>
+
+        <ul class="scoreboard" id="scoreboard"></ul>
+
+        <p>Scoreboard</p>
+      </div>
+      <div class="column3">
+        <div class="logo-box"><img src="logo.svg" alt="" srcset="" /></div>
+        <div class="stats-box">
+          <div class="sale-stat">
+            Tickets sold : <span id="sold-tickets"></span>
+          </div>
+          <div class="use-stat">
+            Tickets used : <span id="used-tickets"></span>
+          </div>
+          <div class="player-sign-stat">
+            Players Joined : <span id="joined-players"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>

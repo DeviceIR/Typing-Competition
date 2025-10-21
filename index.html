@@ -21,7 +21,7 @@
     </div>
 
     <div class="overlay front-layer" id="login-container">
-      <p class="overlay__text">enter Your fking ticket</p>
+      <p class="overlay__text">Enter your ticket code</p>
       <input
         type="text"
         class="overlay__input"
@@ -47,34 +47,30 @@
     <div id="game" class="hidden">
       <div class="details">
         <div class="wpm">
-          <div class="head">Words/min</div>
-          <div id="init_wpm">0</div>
+          <div class="head">WPM</div>
+          <div class="font35" id="wpm">0</div>
         </div>
 
         <div class="errors">
           <div class="head">Errors</div>
-          <div id="init_errors">0</div>
+          <div class="font35" id="errorCount">0</div>
         </div>
 
         <div class="timer">
           <div class="head">Time(s)</div>
-          <div id="init_time">0s</div>
+          <div class="font35" id="elapsedTime">0s</div>
         </div>
 
         <div class="accuracy">
           <div class="head">Accuracy(%)</div>
-          <div class="init_accuracy">0</div>
+          <div class="font35" id="accuracy">0</div>
         </div>
       </div>
-      <div class="content">
-        <!--<h1 class="title">Focus</h1>
-      <h1 class="title">Be Ready</h1>-->
-      </div>
+      <div class="content" id="content"></div>
       <div class="container selen">
         <div class="input-box">
-          <!-- onfocusout="resset()" -->
           <input
-            id="clearrr"
+            id="input"
             class="User-input"
             placeholder="Do your best..."
             type="text"
@@ -83,6 +79,7 @@
             spellcheck="false"
             aria-label="Typing input"
             value=""
+            onkeypress="onInput(event)"
           />
         </div>
       </div>
@@ -150,13 +147,14 @@
             <li class="htb1">;</li>
             <li class="htb1" id="right-shift">SHIFT</li>
           </ul>
+          <ul class="row row-3">
+            <li class="pointer2nd" id="space"></li>
+          </ul>
         </div>
       </div>
     </div>
-    <h1 class="title" style="margin-top: 7rem">Created by device</h1>
+    <h1 class="title" style="margin-top: 7rem">Created by navid and erf</h1>
 
-    <script src="elements.js"></script>
-    <script src="context.js"></script>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

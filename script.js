@@ -38,7 +38,6 @@ async function login() {
     context.setId(id);
     context.setWords(words);
   } catch (err) {
-    console.log(err);
     const message = err.response.data.message;
     showError(message);
   }
@@ -57,7 +56,6 @@ async function startCountDown() {
     context.setState("countdown");
     countdown();
   } catch (err) {
-    console.log(err);
     const message = err.response.data.message;
     showError(message);
   }
@@ -70,10 +68,7 @@ async function countdown() {
     if (value <= 0) {
       clearInterval(timer);
       context.setState("game");
+      initGame();
     }
   }, 100);
-}
-
-function initialGame() {
-  content.classList.add(".contentapear");
 }

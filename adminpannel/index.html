@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>admin panel</title>
+  </head>
+  <body>
+    <div class="containerv2">
+      <div class="input-box">
+        <div>
+          <h3 class="inputField" style="display: inline; color: white">
+            First Name:
+          </h3>
+          <input type="text" class="inputField" id="firstName" />
+        </div>
+        <div>
+          <h3 class="inputField" style="display: inline; color: white">
+            Last Name:
+          </h3>
+          <input type="text" class="inputField" id="lastName" />
+        </div>
+        <div>
+          <h3 class="inputField" style="display: inline; color: white">
+            Nickname:
+          </h3>
+          <input type="text" class="inputField" id="nickName" />
+        </div>
+        <div>
+          <h3 class="inputField" style="display: inline; color: white">
+            Student ID:
+          </h3>
+          <input type="text" class="inputField" id="studentId" />
+        </div>
+      </div>
+      <div class="input-box">
+        <div>
+          <h3 class="inputField" style="display: inline; color: white">
+            Ticket ID:
+          </h3>
+          <input type="text" class="inputField" id="ticketId" />
+        </div>
+      </div>
+      <button class="act" onclick="buyTicket(1)">Buy 1 Ticket</button>
+      <button class="act" onclick="invalidateTicket()">
+        Invalidate Ticket
+      </button>
+      <button class="act" onclick="buyTicket(3)">Buy 3 Tickets</button>
+      <textarea class="console" id="console">Tickets:</textarea>
+      <button class="act" onclick="buyTicket(6)">Buy 6 Tickets</button>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
