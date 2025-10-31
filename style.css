@@ -314,37 +314,26 @@ li {
   padding: 25px;
   border-radius: 10px 10px 10px 10px;
   font-size: 3rem;
-}
-
-.contentapear {
   border: solid 1px white;
   background-color: white;
 }
 
-#init_errors,
-#init_time,
-#init_wpm {
+.font35 {
   font-size: 35px;
 }
 
-.init_accuracy,
-.init_cpm {
-  font-size: 35px;
-}
-
-/* bold for current word */
-
-.content .semi-bold {
+.content__item:nth-child(2) {
   font-weight: 700;
   font-size: 25px;
   color: #f67c9c;
 }
 
-.content .bolded {
+.content__item:nth-child(1) {
   font-weight: 700;
   font-size: 35px;
   color: #f24471;
 }
+
 .content span {
   font-size: 2rem;
   font-weight: 700;
@@ -486,4 +475,8 @@ li {
 #countdown--value {
   font-weight: 900;
   font-size: 4.8rem;
+}
+
+#space {
+  width: 28rem;
 }

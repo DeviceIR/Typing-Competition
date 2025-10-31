@@ -4,6 +4,7 @@ class Context {
   id = null;
   startTime = null;
   words = [];
+  error = 0;
 
   setState(state) {
     this.state = state;
@@ -52,5 +53,33 @@ class Context {
 
   getCountDown() {
     return Math.round((this.startTime - +new Date()) / 1000);
+  }
+
+  removeWord(input) {
+    const word = this.words.shift();
+    if (word !== input) this.error++;
+  }
+
+  getNextLetter(buffer) {
+    const word = this.words[0];
+
+    const arr = Array.from(buffer);
+    const { found, value: letter } = arr.reduce(
+      (prev, l, i) => {
+        if (l === word.charAt(i)) return prev;
+        if (prev.found) return prev;
+
+        prev.found = true;
+        prev.value = word.charAt(i);
+
+        return prev;
+      },
+      { found: false, value: "space" }
+    );
+    if (!found && arr.length !== word.length) {
+      return word.charAt(arr.length);
+    }
+
+    return letter;
   }
 }
